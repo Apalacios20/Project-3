@@ -3,11 +3,15 @@ let myMap = L.map("map", {
     zoom: 4
 });
 
+let street = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(myMap);
+
 /* GeoJson */
 let geo = './static/data/geo_states.json'
 
 
-// Retrieve data in json through d3 and transform into markers for layers
+// retrieving
 d3.json(geo).then(function(data) {
 
     console.log(data);
