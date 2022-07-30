@@ -10,10 +10,29 @@ let street = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 /* GeoJson */
 let geo = './static/data/geo_states.json'
 
+/* state color json */
+// let color = './static/data/state_color.json'
+let color = './static/data/state_color.csv'
 
-// retrieving
+// Color Function
+// function chooseColor(feature) {
+//     for (let i = 0; i < data_c.length; i++) {
+//         if (feature[i].properties.name == data_c) return "yellow";
+//     }
+// }
+
+
+// retrieving states outline json
 d3.json(geo).then(function(data) {
 
-    console.log(data);
+    feature = data.features
+    console.log('States Features:',feature);
     L.geoJson(data).addTo(myMap);
+
+    // retrieve color json
+    d3.csv(color).then(function(data_c) {
+        console.log('Color:',data_c[Blue])
+    })
+
 });
+
