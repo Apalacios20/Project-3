@@ -8,33 +8,27 @@ let street = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         }).addTo(myMap);
 
 /* GeoJson */
-let geo = './static/data/geo_states.json'
+const geo = './static/data/geo_states.json'
 
 /* state color json */
-let color = './static/data/state_color.json'
+const color = './static/data/state_color.json'
 // let color = './static/data/state_color.csv'
 
 // Color Function
-// function chooseColor(name) {    
-//     if (name == ) return "yellow";
-//     }
+function chooseColor(name) {    
+    if (blue.includes(name) ) return "blue";
+    else if (blue.includes(name) ) return "red";
+    };
 
-// Column Function
-function getCol(matrix, col){
-    let column = [];
-    for(var i=0; i<matrix.length; i++){
-       column.push(matrix[i][col]);
-    }
-    return column;
- }
 
 Promise.all([d3.json(geo),d3.json(color)]).then(function(data) {
 
     // Data
-    feature = data[0].features
-    color = data[1]
-    console.log('States Features:',feature);
-    console.log('State Color:', color); 
+    const features = data[0].features
+    const color = data[1]
+    console.log('States Features:',features);
+    console.log('State Color:', color);
+    console.log('name:',features[0].properties.NAME) 
     
     // Appending Blue and Red States
     let blue = [];
@@ -44,9 +38,18 @@ Promise.all([d3.json(geo),d3.json(color)]).then(function(data) {
         blue.push(color[i]['Blue']);
         red.push(color[i]['Red']);
         };
-    console.log('Blue:', red);
     
-    L.geoJson(data).addTo(myMap);
+    // Geo Json
+    L.geoJson(data[0], {
+        style: function(feature) {
+            return {
+              color: "white",
+              fillColor: chooseColor(feature.properties.NAME),
+              fillOpacity: 0.5,
+              weight: 1.5
+            };
+        }
 
-    
-  });
+    }).addTo(myMap);
+
+});
