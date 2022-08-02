@@ -10,13 +10,13 @@
 /* GeoJson */
 const geo = './static/data/geo_states.json'
 
-/* state color json */
+/* State color Json */
 const color = './static/data/state_color.json'
 
-/* State Center Points */
+/* State Center Points CSV */
 const center = './static/data/center_points.csv'
 
-/* Guns */
+/* Guns CSV */
 const gun = './static/data/guns2.csv'
 
 /* Custom marker icon */
@@ -131,6 +131,25 @@ Promise.all([d3.json(geo),d3.json(color),d3.csv(center),d3.csv(gun)])
                             // .addTo(myMap)
         );
 
+        let cfg = {
+            // radius should be small ONLY if scaleRadius is true (or small radius is intended)
+            // if scaleRadius is false it will be the constant radius used in pixels
+            "radius": 2,
+            "maxOpacity": .8,
+            // scales the radius based on map zoom
+            "scaleRadius": true,
+            // if set to false the heatmap uses the global maximum for colorization
+            // if activated: uses the data maximum within the current map boundaries
+            //   (there will always be a red spot with useLocalExtremas true)
+            "useLocalExtrema": true,
+            // which field name in your data represents the latitude - default "lat"
+            latField: c_coordinates[i][0],
+            // which field name in your data represents the longitude - default "lng"
+            lngField: c_coordinates[i][1],
+            // which field name in your data represents the data value - default "value"
+            valueField: guns[i]['Registerd Guns']
+          };
+
     }
 
     /* MAP */
@@ -146,7 +165,7 @@ Promise.all([d3.json(geo),d3.json(color),d3.csv(center),d3.csv(gun)])
     
 
     // Lists into layer groups
-    let party = L.layerGroup(demo);
+    // var heatmapLayer = new HeatmapOverlay(cfg);
     let marker_layer = L.layerGroup(markers);
     let circle_layer = L.layerGroup(circles);
 
@@ -160,6 +179,7 @@ Promise.all([d3.json(geo),d3.json(color),d3.csv(center),d3.csv(gun)])
     let overlayMaps = {
         "Info": marker_layer,
         "Fire Arms Density": circle_layer,
+        // "Heatmap Fire Arms Density": heatmapLayer,
         "Polical Party": demo
     };
 
