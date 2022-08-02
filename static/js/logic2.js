@@ -1,11 +1,11 @@
-let myMap = L.map("map", {
-    center: [41.515111142650824, -112.22313302713114],
-    zoom: 3
-});
+// let myMap = L.map("map", {
+//     center: [41.515111142650824, -112.22313302713114],
+//     zoom: 3
+// });
 
-let street = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-        }).addTo(myMap);
+// let street = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+//     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+//         }).addTo(myMap);
 
 /* GeoJson */
 const geo = './static/data/geo_states.json'
@@ -60,7 +60,7 @@ Promise.all([d3.json(geo),d3.json(color),d3.csv(center),d3.csv(gun)])
         };
         
     // Geo Json and Color function COME BACK TO LAYER  newLayer =
-    L.geoJson(data[0], {
+    let demo = L.geoJson(data[0], {
         style: function(feature) {
             return {
               color: "white",
@@ -69,8 +69,7 @@ Promise.all([d3.json(geo),d3.json(color),d3.csv(center),d3.csv(gun)])
               weight: 0.85
             };
         }
-
-    }).addTo(myMap);
+    });//.addTo(myMap);
 
 
     // Marker lists
@@ -103,7 +102,9 @@ Promise.all([d3.json(geo),d3.json(color),d3.csv(center),d3.csv(gun)])
         else {
             density = "green";
         }
-        // markers.push (
+
+        // Markers
+        markers.push (
             L.marker(c_coordinates[i], {
                 icon: orangeIcon               
                 }).bindPopup(`<h1>${guns[i]['State']}</h1><hr>
@@ -111,22 +112,99 @@ Promise.all([d3.json(geo),d3.json(color),d3.csv(center),d3.csv(gun)])
                     <h3>Registered Guns: ${guns[i]['Registerd Guns']}</H3>
                     <h3>Pop. Gun Ownership: ${guns[i]['Gun Ownership']}</H3>
                     <h3>School Shootings: ${guns[i]['School Shootings']}</H3>`)
-                        .addTo(myMap);
-        // )
-        // circles.push(
-            // L.circle(c_coordinates[i], {
-            //     fillOpacity: 0.65,
-            //     color: "white",
-            //     fillColor: density,
-            //     weight: 0.55,
-            //     radius: Math.sqrt(guns[i]['Registerd Guns']) * 500
-            //         }).bindPopup(`<h1>${guns[i]['State']}</h1><hr>
-            //             <h3>Population: ${guns[i]['Population']}</H3>
-            //             <h3>Registered Guns: ${guns[i]['Registerd Guns']}</H3>
-            //             <h3>Pop. Gun Ownership: ${guns[i]['Gun Ownership']}</H3>
-            //             <h3>School Shootings: ${guns[i]['School Shootings']}</H3>`)
-            //                 .addTo(myMap)
-        // )
+                        // .addTo(myMap);
+        );
+        
+        // Circles
+        circles.push(
+            L.circle(c_coordinates[i], {
+                fillOpacity: 0.65,
+                color: "white",
+                fillColor: density,
+                weight: 0.55,
+                radius: Math.sqrt(guns[i]['Registerd Guns']) * 600
+                    })//.bindPopup(`<h1>${guns[i]['State']}</h1><hr>
+                        // <h3>Population: ${guns[i]['Population']}</H3>
+                        // <h3>Registered Guns: ${guns[i]['Registerd Guns']}</H3>
+                        // <h3>Pop. Gun Ownership: ${guns[i]['Gun Ownership']}</H3>
+                        // <h3>School Shootings: ${guns[i]['School Shootings']}</H3>`)
+                            // .addTo(myMap)
+        );
 
     }
-});
+
+    /* MAP */
+
+    // Base layers.
+    let street = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        });
+      
+    let topo = L.tileLayer('https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png', {
+        attribution: 'Map data: &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, <a href="http://viewfinderpanoramas.org">SRTM</a> | Map style: &copy; <a href="https://opentopomap.org">OpenTopoMap</a> (<a href="https://creativecommons.org/licenses/by-sa/3.0/">CC-BY-SA</a>)'
+        });
+    
+
+    // Lists into layer groups
+    let party = L.layerGroup(demo);
+    let marker_layer = L.layerGroup(markers);
+    let circle_layer = L.layerGroup(circles);
+
+    // baseMaps object.
+    let baseMaps = {
+        "Street": street,
+        "Topographic": topo
+    };
+
+    // Overlay object to hold our overlay
+    let overlayMaps = {
+        "Info": marker_layer,
+        "Fire Arms Density": circle_layer,
+        "Polical Party": demo
+    };
+
+    // Default map
+    let myMap = L.map("map", {
+        center: [41.515111142650824, -112.22313302713114],
+        zoom: 3.25,
+        layers: [street, marker_layer]
+    });
+
+    // Layer control
+    L.control.layers(baseMaps, overlayMaps, {
+        collapsed: false
+    }).addTo(myMap);
+
+    /*Legend*/
+    function getColor(d) {
+        return d > 500000 ? "purple" :
+            d > 400000  ? "red" :
+            d > 300000  ? "orange" :
+            d > 200000  ? "yellow" :
+            d > 100000   ? "yellowgreen" :
+                    "green";
+    }
+
+    let legend = L.control({
+        position: "bottomleft"
+    });
+
+    legend.onAdd = function(myMap) {
+        let div = L.DomUtil.create("div", "info legend"),
+            grades = [0, 100000, 200000, 300000, 400000, 500000],
+            labels = ["<strong> Registered Guns </strong>"],
+            from, to;
+        for (let i = 0; i < grades.length; i++) {
+            from = grades[i];
+            to = grades[i + 1];
+            labels.push(
+                "<i style='background:" + getColor(from + 1) + "'></i>" + from + (to ? "&ndash;" + to: "+"));
+        }    
+        div.innerHTML = labels.join("<br>");
+        return div;
+        };
+
+        legend.addTo(myMap);
+
+    }
+);
