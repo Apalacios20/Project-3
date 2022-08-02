@@ -3,31 +3,71 @@
   <head>
     <meta charset="UTF-8">
     <title>U.S. Mapping</title>
+    
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script> -->
+    <!-- <script src="//ajax.googleapis.com/ajax/libs/dojo/1.14.1/dojo/dojo.js" -->
+                  <!-- data-dojo-config="async: true"></script> -->
+    <!-- <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script> -->
 
     <!-- Leaflet CSS -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.3/dist/leaflet.css"
-    integrity="sha512-Rksm5RenBEKSKFjgI3a41vrjkw4EVPlJ3+OiI65vTjIdo9brlAacEuKOiQ5OFh7cOI1bkDwLqdLw3Zg0cRJAAQ=="
-    crossorigin=""/>
+          integrity="sha512-Rksm5RenBEKSKFjgI3a41vrjkw4EVPlJ3+OiI65vTjIdo9brlAacEuKOiQ5OFh7cOI1bkDwLqdLw3Zg0cRJAAQ=="
+          crossorigin=""/>
 
     <!-- Leaflet JavaScript code -->
     <script src="https://unpkg.com/leaflet@1.3.3/dist/leaflet.js"
-    integrity="sha512-tAGcCfR4Sc5ZP5ZoVz0quoZDYX5aCtEm/eu1KhSLj2c9eFrylXZknQYmxUssFaVJKvvc0dJQixhGjG2yXWiV9Q=="
-    crossorigin=""></script>
+            integrity="sha512-tAGcCfR4Sc5ZP5ZoVz0quoZDYX5aCtEm/eu1KhSLj2c9eFrylXZknQYmxUssFaVJKvvc0dJQixhGjG2yXWiV9Q=="
+            crossorigin=""></script>
 
     <!-- D3 library -->
     <script src="https://d3js.org/d3.v5.min.js"></script>
 
-    <!-- Our CSS -->
+    <!-- Map CSS -->
     <link rel="stylesheet" type="text/css" href="static/css/map_style.css">
     
     <!-- extra -->
 
+
   </head>
   
   <body>
+    <div class="navigation">
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+          <a class="navbar-brand" style="background-color: rgb(248, 251, 255);" href="index.html">Gun Statistics</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavDropdown">
+              <ul class="navbar-nav ml-auto">
+                  <li class="nav-item dropdown">
+                      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          PLOTS
+                      </a>
+                      <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                          <a class="dropdown-item" href="Blue/Red">RED/Blue</a>
+                          <a class="dropdown-item" href="Gun Violence">Shootings in the US</a>
+                          <a class="dropdown-item" href="Place Holder 2">Placeholder</a>
+                          <a class="dropdown-item" href="Place Holder 3 ">Placeholder</a>
+                      </div>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link" href="Page2.html">School Shootings in The US</a>
+              
+                  <li class="nav-item">
+                      <a class="nav-link" href="data.html">DATA</a>
+                  </li>
+              </ul>
+          </div>
+      </nav>
+    </div>
 
     <!-- map div -->
-    <div id="map"></div>
+    <!-- <div class="container-fluid"> -->
+      <div id="map"></div>
+    <!-- </div> -->
+    
 
     <!-- JavaScript file -->
     <script type="text/javascript" src="static/js/map_logic.js"></script>

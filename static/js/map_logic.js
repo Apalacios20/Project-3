@@ -99,12 +99,13 @@ Promise.all([d3.json(geo),d3.json(color),d3.csv(center),d3.csv(gun)])
         markers.push (
             L.marker(c_coordinates[i], {
                 icon: orangeIcon               
-                }).bindPopup(`<h1>${guns[i]['State']}</h1><hr>
-                    <h3>Population: ${guns[i]['Population']}</H3>
-                    <h3>Registered Guns: ${guns[i]['Registerd Guns']}</H3>
-                    <h3>Pop. Gun Ownership: ${guns[i]['Gun Ownership']}</H3>
-                    <h3>School Shootings: ${guns[i]['School Shootings']}</H3>`)
-                        // .addTo(myMap);
+                }).bindPopup(`<h3>${guns[i]['State']}</h3><hr>
+                    <h5>Population: ${guns[i]['Population']}</h5><hr>
+                    <h5>Registered Guns: ${guns[i]['Registerd Guns']}</h5><hr>
+                    <h5>Gun Ownership: ${guns[i]['Gun Ownership']}</h5><hr>
+                    <h5>School Shootings: ${guns[i]['School Shootings']}</h5>`,
+                    )
+                        // .addTo(myMap); 
         );
         
         // Circles
@@ -113,9 +114,9 @@ Promise.all([d3.json(geo),d3.json(color),d3.csv(center),d3.csv(gun)])
                 fillOpacity: 0.65,
                 color: "white",
                 fillColor: density,
-                weight: 0.55,
+                weight: 0.85,
                 radius: Math.sqrt(guns[i]['Registerd Guns']) * 600
-                    })//.bindPopup(`<h1>${guns[i]['State']}</h1><hr>
+                    })//.bindPopup(`<h3>${guns[i]['State']}</h3>`)<hr>
                         // <h3>Population: ${guns[i]['Population']}</H3>
                         // <h3>Registered Guns: ${guns[i]['Registerd Guns']}</H3>
                         // <h3>Pop. Gun Ownership: ${guns[i]['Gun Ownership']}</H3>

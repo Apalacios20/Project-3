@@ -8,17 +8,19 @@ body {
   html {
     height: 100%;
   }
-  h1 {
+  h3 {
     text-align: center;
   }
   
-  h3 {
-    color: rgb(88, 92, 80);
+  h5 {
+    color: rgb(29, 30, 28);
+    font-size: 15px;
     text-align: center;
   }
   
   .info.legend {
     background-color: white;
+    
   }
   
   .info {
@@ -42,3 +44,11 @@ body {
     margin-right: 8px;
     opacity: 0.72;
     }
+
+    .leaflet-popup-content {
+      max-width: 220px;
+      min-width: 140px;
+      /* width: 220px; */
+      height: 185px;
+      overflow-y: scroll;
+  }
