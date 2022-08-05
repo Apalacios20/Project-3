@@ -1,15 +1,15 @@
 
 /* GeoJson */
-const geo = './static/data/geo_states.json'
+const geo = 'data/geo_states.json'
 
 /* State color Json */
-const color = './static/data/state_color.json'
+const color = 'data/state_color.json'
 
 /* State Center Points CSV */
-const center = './static/data/center_points.csv'
+const center = 'data/center_points.csv'
 
 /* Guns CSV */
-const gun = './static/data/gun_stats.csv'
+const gun = 'data/gun_stats.csv'
 
 /* Custom marker icon */
 let orangeIcon = new L.Icon({
@@ -102,10 +102,9 @@ Promise.all([d3.json(geo),d3.json(color),d3.csv(center),d3.csv(gun)])
                 }).bindPopup(`<h3>${guns[i]['State']}</h3><hr>
                     <h5>Population: ${guns[i]['Population']}</h5><hr>
                     <h5>Registered Guns: ${guns[i]['Registerd Guns']}</h5><hr>
-                    <h5>Gun Ownership: ${guns[i]['Gun Ownership']}</h5><hr>
-                    <h5>School Shootings: ${guns[i]['School Shootings']}</h5>`,
-                    )
-                        // .addTo(myMap); 
+                    <h5>Pop. Gun Ownership: ${guns[i]['Gun Ownership']}</h5><hr>
+                    <h5>School Shootings: ${guns[i]['School Shootings']}</h5>`)
+                        // .addTo(myMap);
         );
         
         // Circles
@@ -114,9 +113,9 @@ Promise.all([d3.json(geo),d3.json(color),d3.csv(center),d3.csv(gun)])
                 fillOpacity: 0.65,
                 color: "white",
                 fillColor: density,
-                weight: 0.85,
+                weight: 0.55,
                 radius: Math.sqrt(guns[i]['Registerd Guns']) * 600
-                    })//.bindPopup(`<h3>${guns[i]['State']}</h3>`)<hr>
+                    }).bindPopup(`<h3>${guns[i]['State']}</h3>`)//<hr>
                         // <h3>Population: ${guns[i]['Population']}</H3>
                         // <h3>Registered Guns: ${guns[i]['Registerd Guns']}</H3>
                         // <h3>Pop. Gun Ownership: ${guns[i]['Gun Ownership']}</H3>
