@@ -42,12 +42,14 @@ for (let i = 0; i < gunData.length; i++) {
     console.log(shootings)
     console.log(ownership)
 
+
+
     // Pie
     let data_pie = [{
         values: guns,
         labels: states,
         domain: {column: 0},
-        //name: 'Reg.',
+        // name: 'Reg.',
         // hoverinfo: 'label+percent+name',
         hoverinfo: 'label+percent',
         hole: .35,
@@ -65,7 +67,7 @@ for (let i = 0; i < gunData.length; i++) {
       }];
       
       let layout = {
-        title: 'Registered Guns and Population per U.S. State',
+        //title: 'Registered Guns and Population per U.S. State',
         annotations: [
           {
             font: {
@@ -135,7 +137,7 @@ for (let i = 0; i < gunData.length; i++) {
       var data2 = [trace1,trace2];
       
       var layout2 = {
-        title: 'To date Gun Ownership and School Shootings'
+        //title: 'To date Gun Ownership and School Shootings'
       };
       
       Plotly.newPlot('bar', data2, layout2);

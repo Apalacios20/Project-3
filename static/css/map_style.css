@@ -52,13 +52,19 @@ body {
   
   h3 {
     text-align: center;
+    
   }
+
   
   h5 {
     color: rgb(29, 30, 28);
     font-size: 15px;
     text-align: center;
   }
+
+  /* .container-fluid {
+    padding: 15px 0px 15px 0px;
+  } */
 
   footer {
     background-color: #0f1b3f;
