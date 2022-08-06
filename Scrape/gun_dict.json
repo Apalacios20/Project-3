@@ -1,0 +1,17 @@
+[{
+  "_id": {
+    "$oid": "62eec3800f9a132fc0beeae3"
+  },
+  "Charts": [
+    "https://ichef.bbci.co.uk/news/2048/cpsprodpb/2851/production/_124912301_optimised_guns_per_country-nc.png",
+    "https://ichef.bbci.co.uk/news/2048/cpsprodpb/9D81/production/_124912304_optimised_us_gun_laws-nc.png",
+    "https://ichef.bbci.co.uk/news/2048/cpsprodpb/89E2/production/_117889253_spending_01_v3-nc.png"
+  ],
+  "Headline": "There are more guns than people in the United States, according to a new study of global firearm ownership",
+  "Paragraphs": [
+    "Those numbers come from the latest edition of the global Small Arms Survey, a project of the Graduate Institute of International and Development Studies in Geneva.",
+    "The report, which draws on official data, survey data and other measures for 230 countries, finds that global firearm ownership is heavily concentrated in the United States. In 2017, for instance, Americans made up 4 percent of the world's population but owned about 46 percent of the entire global stock of 857 million civilian firearms.",
+    "With an estimated 120.5 guns for every 100 residents, the firearm ownership rate in the United States is twice that of the next-highest nation, Yemen, with just 52.8 guns per 100 residents. In raw number terms, the closest country to the United States is India, with 71.1 million firearms in circulation. These numbers do not include firearms owned by law enforcement agencies or militaries.",
+    "On gun ownership, the United States stands out among the world's wealthiest nations, with an ownership rate more than three times higher than the rate in the next-highest country, Canada. The gun ownership rate in the United States is more than six times higher than the average among similar wealthy nations in the Organization for Economic Cooperation and Development."
+  ]
+}]
