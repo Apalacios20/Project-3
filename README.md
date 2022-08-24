@@ -3,15 +3,15 @@
 ## Objective:
 Gun stats of current years will be displayed in a way that is user interactive and will give the user a solid view of the gun density throughout the United States.
 
-##Tools:
--Python: JupyterLab, pandas
--JavaScript: Leaflet, JS
+## Tools:
+-Python: JupyterLab, pandas <br>
+-JavaScript: Leaflet, JS <br>
 -HTML/CSS
 
-##Data Sources:
-https://worldpopulationreview.com/state-rankings/guns-per-capita
-https://www.gkgigs.com/list-of-blue-states-and-red-states/
-https://worldpopulationreview.com/state-rankings/school-shootings-by-state
-https://www.pewresearch.org/fact-tank/2021/09/13/key-facts-about-americans-and-guns/
-https://www.pewresearch.org/fact-tank/2022/02/03/what-the-data-says-about-gun-deaths-in-the-u-s/
+## Data Sources:
+https://worldpopulationreview.com/state-rankings/guns-per-capita <br>
+https://www.gkgigs.com/list-of-blue-states-and-red-states/ <br>
+https://worldpopulationreview.com/state-rankings/school-shootings-by-state <br>
+https://www.pewresearch.org/fact-tank/2021/09/13/key-facts-about-americans-and-guns/ <br>
+https://www.pewresearch.org/fact-tank/2022/02/03/what-the-data-says-about-gun-deaths-in-the-u-s/ <br>
 https://www.cdc.gov/nchs/pressroom/sosmap/firearm_mortality/firearm.htm
