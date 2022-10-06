@@ -16,6 +16,6 @@ https://www.pewresearch.org/fact-tank/2021/09/13/key-facts-about-americans-and-g
 https://www.pewresearch.org/fact-tank/2022/02/03/what-the-data-says-about-gun-deaths-in-the-u-s/ <br>
 https://www.cdc.gov/nchs/pressroom/sosmap/firearm_mortality/firearm.htm
 
-## Site Link:
-Take a look at the interactive site yourself! <br>
+## Map Link:
+Take a look at the interactive Map for yourself! <br>
 https://apalacios20.github.io/U.S.-Guns/
